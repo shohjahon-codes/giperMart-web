@@ -15,6 +15,7 @@ import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { LikeRed } from "../../assets/icon/like-red";
+
 export const Header = () => {
   let [isOpen, setIsOpen] = React.useState(false);
   const { pathname } = useLocation();
@@ -29,7 +30,7 @@ export const Header = () => {
 
   return (
     <div className="fixed left-0 right-0 top-0 z-50 bg-white shadow-sm shadow-basalt-grey">
-      <div className="container flex items-center justify-end gap-[24px] py-2">
+      <div className="container flex hidden items-center justify-end gap-[24px] py-2 md:flex">
         <a
           className=" text-base font-normal text-sys-light-on-surface"
           href="#"
@@ -55,17 +56,17 @@ export const Header = () => {
           <PhoneIcon /> +998 90 253 77 53
         </a>
       </div>
-      <div className="container flex gap-4 py-[18px] ">
-        <div className="flex items-center gap-[32px]">
+      <div className="container flex gap-4 py-[18px]">
+        <div className="flex items-center gap-[32px] ">
           <Link to={"/"}>
             <img src={logo} alt="logo" />
           </Link>
-          <div className="">
+          <div className="hidden md:block">
             <button
               onClick={() => setIsOpen(true)}
               className="flex items-center bg-aureolin py-[10px] pl-[12px] pr-[45px]"
             >
-              {isOpen ? <XIcon /> : <MenuIcon />}Каталог
+              {isOpen ? <XIcon /> : <MenuIcon />} Каталог
             </button>
             {!isLoading && (
               <Catolog isOpen={isOpen} setIsOpen={setIsOpen}>
@@ -78,10 +79,10 @@ export const Header = () => {
             )}
           </div>
         </div>
-        <div className="grow">
+        <div className="hidden grow md:block">
           <Search />
         </div>
-        <div className="flex items-center gap-[20px]">
+        <div className="flex hidden items-center gap-[20px] md:flex">
           <Link
             to={"/user"}
             className="flex flex-col items-center text-base font-normal text-sys-light-on-surface"
@@ -103,6 +104,15 @@ export const Header = () => {
               {length}
             </span>
           </Link>
+        </div>
+        {/* Mobile version */}
+        <div className="w-full  flex gap-4 md:hidden">
+          <button
+            onClick={() => setIsOpen(true)}
+            className="flex items-center bg-aureolin  py-[10px] pl-[12px] pr-[45px]"
+          >
+            {isOpen ? <XIcon /> : <MenuIcon />} Каталог
+          </button>
         </div>
       </div>
     </div>

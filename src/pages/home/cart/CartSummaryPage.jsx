@@ -73,7 +73,7 @@ const CartSummaryPage = () => {
             <div className="order-items">
                 {cartItems.map(item => (
                     <div key={item.id} className="flex justify-between border-b py-4">
-                         <span className='w-20'><img src={item.img} alt="" /></span>
+                         <span className='w-20'><img src={item.image} alt="" /></span>
                         <span>{item.name}</span>
                         <span>${item.price} x {item.quantity}</span>
                     </div>
